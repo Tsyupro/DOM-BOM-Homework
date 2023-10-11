@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Стилі для пунктирного підкреслення посилань */
+    .dotted-underline {
+      border-bottom: 1px dotted #000;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Список посилань</h1>
+
+<ul id="linkList">
+  <li><a href="http://example.com">Посилання 1</a></li>
+  <li><a href="http://example.org">Посилання 2</a></li>
+  <li><a href="http://example.com/something">Посилання 3</a></li>
+  <li><a href="https://example.com">Посилання 4 (https)</a></li>
+  <li><a href="ftp://example.com">Посилання 5 (ftp)</a></li>
+</ul>
+
+<script>
+  const linkList = document.getElementById('linkList').getElementsByTagName('a');
+
+  for (let i = 0; i < linkList.length; i++) {
+    if (linkList[i].href.startsWith('http://')) {
+      linkList[i].classList.add('dotted-underline');
+    }
+  }
+</script>
+
+</body>
+</html>

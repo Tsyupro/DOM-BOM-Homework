@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Список книг</title>
+  <style>
+    .selected {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+  <ul id="bookList">
+    <li>Книга 1</li>
+    <li>Книга 2</li>
+    <li>Книга 3</li>
+    <li>Книга 4</li>
+  </ul>
+
+  <script>
+    const bookList = document.getElementById('bookList');
+    let selectedItems = [];
+
+    bookList.addEventListener('click', (event) => {
+      const target = event.target;
+      
+      const isCtrlPressed = event.ctrlKey;
+
+      const isShiftPressed = event.shiftKey;
+
+      if (isCtrlPressed) {
+        target.classList.toggle('selected');
+      } else if (isShiftPressed) {
+        let startIndex = Array.from(bookList.children).indexOf(target);
+        let endIndex = Array.from(bookList.children).indexOf(selectedItems[selectedItems.length - 1]);
+
+        if (startIndex > endIndex) {
+          [startIndex, endIndex] = [endIndex, startIndex];
+        }
+
+        for (let i = startIndex; i <= endIndex; i++) {
+          bookList.children[i].classList.add('selected');
+        }
+      } else {
+        target.classList.toggle('selected');
+        selectedItems.push(target);
+      }
+    });
+  </script>
+</body>
+</html>

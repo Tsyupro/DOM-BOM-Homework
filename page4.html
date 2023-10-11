@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новини</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .news-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .news-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="news-container" id="newsContainer">
+        <h1>Новини</h1>
+        <div id="newsList">
+        </div>
+    </div>
+
+    <script>
+        const newsArray = [
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "Новина 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "Новина 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "Новина 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "Новина 4: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        ];
+
+        let newsIndex = 0; 
+
+        function appendNews() {
+            const newsList = document.getElementById('newsList');
+            const newsContainer = document.getElementById('newsContainer');
+
+            if (newsIndex < newsArray.length) {
+                const newsItem = document.createElement('div');
+                newsItem.classList.add('news-item');
+                newsItem.textContent = newsArray[newsIndex];
+                newsList.appendChild(newsItem);
+                newsIndex++;
+
+
+                if (window.innerHeight + window.scrollY >= newsContainer.offsetHeight) {
+                    appendNews();
+                }
+            }
+        }
+
+
+        appendNews();
+
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.getElementById('newsContainer').offsetHeight) {
+                appendNews();
+            }
+        });
+    </script>
+</body>
+</html>

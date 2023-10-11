@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  textarea {
+    display: none;
+    width: 100%;
+    height: 200px;
+  }
+</style>
+</head>
+<body>
+
+<div id="displayText" ondblclick="toggleDisplay()">This is the initial text. Double-click to edit.</div>
+<textarea id="editText" onkeydown="handleKeyPress(event)"></textarea>
+
+<script>
+  function handleKeyPress(event) {
+    if (event.ctrlKey && event.key === "e") {
+      event.preventDefault();  
+      toggleDisplay();
+    } else if (event.ctrlKey && event.key === "s") {
+      event.preventDefault();  
+      saveText();
+      toggleDisplay();
+    }
+  }
+
+  function toggleDisplay() {
+    var displayText = document.getElementById("displayText");
+    var editText = document.getElementById("editText");
+
+    if (displayText.style.display === "none") {
+      displayText.style.display = "block";
+      editText.style.display = "none";
+      displayText.innerHTML = editText.value;
+    } else {
+      editText.style.display = "block";
+      displayText.style.display = "none";
+      editText.value = displayText.innerHTML;
+      editText.focus();  
+    }
+  }
+
+  function saveText() {
+    var displayText = document.getElementById("displayText");
+    var editText = document.getElementById("editText");
+    displayText.innerHTML = editText.value;
+  }
+</script>
+
+</body>
+</html>

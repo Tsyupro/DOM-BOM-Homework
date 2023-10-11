@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Галерея</title>
+  <style>
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .image-container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .prev-button, .next-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .prev-button:hover, .next-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .prev-button {
+      left: 10px;
+    }
+
+    .next-button {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery-container">
+    <div class="image-container">
+      <button class="prev-button" onclick="showPreviousImage()">&#9664;</button>
+      <img id="galleryImage" src="img/360_F_305467506_QczGkOYLChAeFpjsLrzFltFXwxunx0xE.jpg" alt="Image 1">
+      <button class="next-button" onclick="showNextImage()">&#9654;</button>
+    </div>
+  </div>
+
+  <script>
+    const images = ['img/360_F_305467506_QczGkOYLChAeFpjsLrzFltFXwxunx0xE.jpg', 'img/2.jpg', 'img/3.jpg'];
+    let currentImageIndex = 0;
+    const galleryImage = document.getElementById('galleryImage');
+
+    function updateImage() {
+      galleryImage.src = images[currentImageIndex];
+    }
+
+    function showPreviousImage() {
+      if (currentImageIndex > 0) {
+        currentImageIndex--;
+        updateImage();
+      }
+    }
+
+    function showNextImage() {
+      if (currentImageIndex < images.length - 1) {
+        currentImageIndex++;
+        updateImage();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Розгортання блоків інформації</title>
+  <style>
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      border: 1px solid #ccc;
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+
+    .accordion-item .accordion-header {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .accordion-item .accordion-content {
+      display: none;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(1)">Заголовок 1</div>
+      <div class="accordion-content" id="accordion-content-1">
+        Вміст блоку 1
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(2)">Заголовок 2</div>
+      <div class="accordion-content" id="accordion-content-2">
+        Вміст блоку 2
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(3)">Заголовок 3</div>
+      <div class="accordion-content" id="accordion-content-3">
+        Вміст блоку 3
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let previousContentId = null;
+
+    function toggleAccordion(contentId) {
+      const contentElement = document.getElementById(`accordion-content-${contentId}`);
+
+      if (contentElement.style.display === 'block') {
+        contentElement.style.display = 'none';
+        previousContentId = null;
+      } else {
+        if (previousContentId) {
+          const previousContentElement = document.getElementById(`accordion-content-${previousContentId}`);
+          previousContentElement.style.display = 'none';
+        }
+
+        contentElement.style.display = 'block';
+        previousContentId = contentId;
+      }
+    }
+  </script>
+</body>
+</html>
